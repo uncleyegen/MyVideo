@@ -1,6 +1,8 @@
 package com.halit.myvideo;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,10 +33,23 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.title.setText(allVideos.get(position).getTitle());
         holder.author.setText(allVideos.get(position).getAuthor());
         Picasso.get().load(allVideos.get(position).getImageUrl()).into(holder.videoImage);
+
+        holder.vv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Bundle b = new Bundle();
+                b.putSerializable("videoData",allVideos.get(position));
+                Intent i = new Intent(context, Player.class);
+                i.putExtras(b);
+                v.getContext().startActivity(i);
+
+            }
+        });
 
     }
 

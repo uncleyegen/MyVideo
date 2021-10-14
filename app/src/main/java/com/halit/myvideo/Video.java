@@ -1,6 +1,8 @@
 package com.halit.myvideo;
 
-public class Video {
+import java.io.Serializable;
+
+public class Video implements Serializable {
     private String title;
     private String description;
     private String author;
