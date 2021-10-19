@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-//                Log.d(TAG, "onResponse: "+ response);
+                Log.d(TAG, "onResponse: "+ response);
                 try {
                     JSONArray categories = response.getJSONArray("categories");
                     JSONObject categoriesData = categories.optJSONObject(0);
